@@ -8,7 +8,7 @@ class ActivitiesController < ApplicationController
 
   post "/activities" do
     redirect_if_not_logged_in
-    unless Activity.valid_params?(params)
+    if params[:name].empty? || if params[:description].empty?
       redirect "/activities/new?error=invalid activity"
     end
     Activity.create(params)
@@ -30,7 +30,7 @@ class ActivitiesController < ApplicationController
   post "/activities/:id" do
     redirect_if_not_logged_in
     @activity = Activity.find(params[:id])
-    unless Activity.valid_params?(params)
+    if params[:name].empty? || if params[:description].empty?
       redirect "/activities/#{@activity.id}/edit?error=invalid activity"
     end
     @activity.update(params.select{|a| a=="name" || a=="description" || a=="destination_id"})
