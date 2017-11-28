@@ -8,7 +8,7 @@ class DestinationsController < ApplicationController
 
   post "/destinations" do
     redirect_if_not_logged_in
-    unless Destination.valid_params?(params)
+    if params[:name].empty?
       redirect "/destinations/new?error=invalid destination"
     end
     Destination.create(params)
@@ -30,7 +30,7 @@ class DestinationsController < ApplicationController
   post "/destinations/:id" do
     redirect_if_not_logged_in
     @destination = Destination.find(params[:id])
-    unless Destination.valid_params?(params)
+    if params[:name].empty?
       redirect "/destinations/#{@destination.id}/edit?error=invalid destination"
     end
     @destination.update(name: params[:name])
