@@ -21,4 +21,20 @@ class ActivitiesController < ApplicationController
     erb :'/activities/new'
   end
 
+  get "/activities/:id" do
+    redirect_if_not_logged_in
+    @activity = Activity.find(params[:id])
+    erb :'activities/show'
+  end
+
+  post "/activities/:id" do
+    redirect_if_not_logged_in
+    @activity = Activity.find(params[:id])
+    unless Activity.valid_params?(params)
+      redirect "/activities/#{@activity.id}/edit?error=invalid activity"
+    end
+    @activity.update(params.select{|a| a=="name" || a=="description" || a=="destination_id"})
+    redirect "/activities/#{@activity.id}"
+  end
+
 end
