@@ -1,0 +1,7 @@
+<br>
+<h3>Your Destinations</h3>
+<%@destinations.each do |destination|%>
+  <%=destination.name%>
+  <a href="/destinations/<%=destination.id%>/edit">Edit</a>
+  <br>
+<% end %>
