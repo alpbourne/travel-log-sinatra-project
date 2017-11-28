@@ -1,7 +1,7 @@
 <br>
 <h3>Edit <%=@activity.name%></h3>
 <p><%=@activity.description%></p>
-<form action="/activities/<%=@activity/id%>" method="POST">
+<form action="/activities/<%=@activity.id%>" method="POST">
   <label>Name</label>
   <input type="text" name="name" value="<%=@activity.name%>">
   <label>Description</label>
