@@ -2,6 +2,6 @@
 <h3>Add a New Destination</h3>
 <form action="/destinations" method="POST">
   <label>Name</label>
-  <input type="text" name="name">
+  <input type="text" name="name" value="<%=@destination.name%>">
   <input type="submit" value="Create">
 </form>
