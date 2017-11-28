@@ -1,0 +1,7 @@
+<br>
+<h3>Destinations</h3>
+<%@user.destinations.each do |destination|%>
+  <ul>
+    <li><a href="/destinations/<%=destination.id%>"><%=destination.name%></a></li>
+  </ul>
+<% end %>
