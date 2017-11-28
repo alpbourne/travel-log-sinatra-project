@@ -6,5 +6,13 @@ class DestinationsController < ApplicationController
     erb :'destinations/index'
   end
 
-  
+  post "/destinations" do
+    redirect_if_not_logged_in
+    unless Destination.valid_params?(params)
+      redirect "/destinations/new?error=invalid destination"
+    end
+    Destination.create(params)
+    redirect "/destinations"
+  end
+
 end
