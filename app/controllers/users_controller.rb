@@ -29,4 +29,14 @@ class UsersController < ApplicationController
       redirect '/destinations'
     end
   end
+
+  get '/login' do
+    @error_message = params[:error]
+    if !session[:user_id]
+      erb :'users/login'
+    else
+      redirect '/destinations'
+    end
+  end
+  
 end
