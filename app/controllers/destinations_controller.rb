@@ -21,5 +21,20 @@ class DestinationsController < ApplicationController
     erb :'/destinations/new'
   end
 
+  get "/destinations/:id" do
+    redirect_if_not_logged_in
+    @destination = Destination.find(params[:id])
+    erb :'destinations/show'
+  end
+
+  post "/destinations/:id" do
+    redirect_if_not_logged_in
+    @destination = Destination.find(params[:id])
+    unless Destination.valid_params?(params)
+      redirect "/destinations/#{@destination.id}/edit?error=invalid destination"
+    end
+    @destination.update(name: params[:name])
+    redirect "/destinations/#{@destination.id}"
+  end
 
 end
