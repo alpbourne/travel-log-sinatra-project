@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     end
   end
 
-  post '/signup' do
+  post '/register' do
     if params[:password] == "" || params[:username] == ""
       redirect to "/register"
     else
@@ -57,5 +57,5 @@ class UsersController < ApplicationController
       redirect to '/'
     end
   end
-  
+
 end
