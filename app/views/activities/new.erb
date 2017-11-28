@@ -9,5 +9,5 @@
   <%Destination.all.each do |destination|%>
     <label><%=destination.name%><input id="<%destination.name%>" type="checkbox" name="destinations[]" values="<%=destination.id%>"></label>
   <% end %>
-  <input type="submit" value="Update">
+  <input type="submit" value="Create">
 </form>
