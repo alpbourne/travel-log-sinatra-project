@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   end
 
   get '/register' do
-    if !session[:user_id]
+    if !logged_in?
       erb :'users/register'
     else
       redirect to '/destinations'
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
 
   get '/login' do
     @error_message = params[:error]
-    if !session[:user_id]
+    if !logged_in?
       erb :'users/login'
     else
       redirect '/destinations'
@@ -50,7 +50,7 @@ class UsersController < ApplicationController
   end
 
   get '/logout' do
-    if session[:user_id] != ""
+    if logged_in?
       session.destroy
       redirect to '/login'
     else
