@@ -1,8 +1,8 @@
 <br>
-<h4>Your Activities</h4>
+<h3>Your Activities</h3>
 <%@activities.each do |activity|%>
-  <%=activity.name%>
-  <%=activity.description%>
+  <h4><%=activity.name%></h4>
+  <%=activity.description%><br>
   <a href="/activities/<%=activity.id%>/edit">Edit</a>
-  <br>
+  <br><br>
 <% end %>
