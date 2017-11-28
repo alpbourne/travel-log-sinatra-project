@@ -1,0 +1,14 @@
+<br>
+<h3>Edit <%=@activity.name%></h3>
+<p><%=@activity.description%></p>
+<form action="/activities/<%=@activity/id%>" method="POST">
+  <label>Name</label>
+  <input type="text" name="name" value="<%=@activity.name%>">
+  <label>Description</label>
+  <input type="text" name="description" value="<%=@activity.description%>">
+  <label>Mark the Destination your Activity belongs to:</label>
+  <%Destination.all.each do |destination|%>
+    <label><%=destination.name%><input id="<%destination.name%>" type="checkbox" name="destinations[]" values="<%=destination.id%>"></label>
+  <% end %>
+  <input type="submit" value="Update">
+</form>
