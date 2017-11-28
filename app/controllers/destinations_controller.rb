@@ -37,4 +37,11 @@ class DestinationsController < ApplicationController
     redirect "/destinations/#{@destination.id}"
   end
 
+  get "/destinations/:id/edit" do
+    redirect_if_not_logged_in
+    @error = params[:error]
+    @destination = Destination.find(params[:id])
+    erb :'destinations/edit'
+  end
+
 end
