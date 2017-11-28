@@ -2,9 +2,9 @@
 <h3>Add a New Activity</h3>
 <form action="/activities" method="POST">
   <label>Name</label>
-  <input type="text" name="name" value="<%=@activity.name%>">
+  <input type="text" name="name">
   <label>Description</label>
-  <input type="text" name="description" value="<%=@activity.description%>">
+  <input type="text" name="description">
   <label>Mark the Destination your Activity belongs to:</label>
   <%Destination.all.each do |destination|%>
     <label><%=destination.name%><input id="<%destination.name%>" type="checkbox" name="destinations[]" values="<%=destination.id%>"></label>

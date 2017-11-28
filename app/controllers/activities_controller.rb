@@ -11,7 +11,7 @@ class ActivitiesController < ApplicationController
     if params[:name].empty? || params[:description].empty?
       redirect "/activities/new?error=invalid activity"
     end
-    Activity.create(params)
+    Activity.create(:name => params[:name], :description => params[:description])
     redirect "/activities"
   end
 
