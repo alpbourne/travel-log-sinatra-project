@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     if !logged_in?
       redirect '/destinations'
     end
-    if !@user=="" && @user == current_user
+    if !@user== "" && @user == current_user
       erb :'users/show'
     else
       redirect '/destinations'
@@ -17,6 +17,16 @@ class UsersController < ApplicationController
       erb :'users/register'
     else
       redirect to '/destinations'
+    end
+  end
+
+  post '/signup' do
+    if params[:password] == "" || params[:username] == ""
+      redirect to "/register"
+    else
+      @user = User.create(:username => params[:username], :password => params[:password])
+      session[:user_id] = @user.id
+      redirect '/destinations'
     end
   end
 end
