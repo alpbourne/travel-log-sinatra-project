@@ -14,4 +14,11 @@ class ActivitiesController < ApplicationController
     Activity.create(params)
     redirect "/activities"
   end
+
+  get "/activities/new" do
+    redirect_if_not_logged_in
+    @error = params[:error]
+    erb :'/activities/new'
+  end
+
 end
