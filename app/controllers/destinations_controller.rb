@@ -15,4 +15,11 @@ class DestinationsController < ApplicationController
     redirect "/destinations"
   end
 
+  get "/destinations/new" do
+    redirect_if_not_logged_in
+    @error = params[:error]
+    erb :'/destinations/new'
+  end
+
+
 end
