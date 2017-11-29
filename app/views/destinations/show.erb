@@ -5,3 +5,8 @@
   <p><a href="/activities/<%=activity.id%>"><%=activity.name%></a></p>
 <% end %>
 <a href="/destinations/<%=@destination.id%>/edit">Edit</a>
+
+<form action="/destinations/<%=@destination.id%>/delete" method="POST">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete Destination" id="submit">
+</form>

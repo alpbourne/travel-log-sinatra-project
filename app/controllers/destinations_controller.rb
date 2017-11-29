@@ -44,4 +44,14 @@ class DestinationsController < ApplicationController
     erb :'destinations/edit'
   end
 
+  delete '/destinations/:id/delete' do
+    @destination = Destination.find(params[:id])
+    if logged_in? && @destination.user_id == current_user.id
+      @destination.destroy
+      "Your destination has been deleted."
+      redirect '/destinations'
+    else
+      redirect '/login'
+    end
+  end
 end
