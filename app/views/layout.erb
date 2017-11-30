@@ -18,7 +18,8 @@
     <h4>The Travel Log</h4>
     <nav>
       <% if logged_in? %>
-        <p>Welcome, <%=current_user.username%></p>
+        <p>Welcome, <%=current_user.username%>!</p>
+        <a href="/destinations">Your Log</a>
         <a href="/destinations/new">Create Destination</a>
         <a href="/activities/new">Create Activity</a>
         <a href="/logout">Log Out</a>
