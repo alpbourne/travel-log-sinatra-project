@@ -4,11 +4,18 @@
 <form action="/activities/<%=@activity.id%>" method="POST">
   <label>Name</label>
   <input type="text" name="name" value="<%=@activity.name%>">
+  <br>
   <label>Description</label>
   <input type="text" name="description" value="<%=@activity.description%>">
+  <br>
   <label>Mark the Destination your Activity belongs to:</label>
   <%@destinations.all.each do |destination|%>
     <label><%=destination.name%><input id="<%destination.name%>" type="checkbox" name="destinations[]" values="<%=destination.id%>"></label>
   <% end %>
+  <br>
   <input type="submit" value="Update">
+</form>
+<form action="/activities/<%=@activity.id%>/delete" method="POST">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete Activity" id="submit">
 </form>

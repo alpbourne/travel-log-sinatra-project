@@ -52,4 +52,15 @@ class ActivitiesController < ApplicationController
     erb :'activities/edit'
   end
 
+  delete '/activities/:id/delete' do
+    @activity = Activity.find(params[:id])
+    if logged_in? && @activity.user_id == current_user.id
+      @activity.destroy
+      "Your Activity has been deleted."
+      redirect '/activities'
+    else
+      redirect '/login'
+    end
+  end
+
 end
