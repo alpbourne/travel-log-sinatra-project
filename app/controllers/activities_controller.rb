@@ -26,7 +26,6 @@ class ActivitiesController < ApplicationController
   get "/activities/:id" do
     redirect_if_not_logged_in
     @activity = Activity.find(params[:id])
-    @destination = Destination.find(params[:id])
     if @activity.user_id == current_user.id
       erb :'activities/show'
     else
