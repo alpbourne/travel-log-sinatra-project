@@ -46,6 +46,7 @@ class ActivitiesController < ApplicationController
 
   get "/activities/:id/edit" do
     redirect_if_not_logged_in
+    @destinations = current_user.destinations
     @error = params[:error]
     @activity = Activity.find(params[:id])
     erb :'activities/edit'
