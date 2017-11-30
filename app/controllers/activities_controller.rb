@@ -2,7 +2,7 @@ class ActivitiesController < ApplicationController
 
   get "/activities" do
     redirect_if_not_logged_in
-    @activities = Activity.all
+    @activities = current_user.activities
     erb :'activities/index'
   end
 
@@ -11,7 +11,8 @@ class ActivitiesController < ApplicationController
     if params[:name].empty? || params[:description].empty?
       redirect "/activities/new?error=invalid activity"
     end
-    Activity.create(:name => params[:name], :description => params[:description])
+    @new_activity = Activity.create(:name => params[:name], :description => params[:description])
+    current_user.activities << @new_activity
     redirect "/activities"
   end
 

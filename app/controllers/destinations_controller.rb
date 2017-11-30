@@ -2,7 +2,7 @@ class DestinationsController < ApplicationController
 
   get "/destinations" do
     redirect_if_not_logged_in
-    @destinations = Destination.all
+    @destinations = current_user.destinations
     erb :'destinations/index'
   end
 
@@ -10,9 +10,11 @@ class DestinationsController < ApplicationController
     redirect_if_not_logged_in
     if params[:name].empty?
       redirect "/destinations/new?error=invalid destination"
+    else
+      @new_destination = Destination.create(params)
+      current_user.destinations << @new_destination
+      redirect "/destinations"
     end
-    Destination.create(params)
-    redirect "/destinations"
   end
 
   get "/destinations/new" do
@@ -24,7 +26,11 @@ class DestinationsController < ApplicationController
   get "/destinations/:id" do
     redirect_if_not_logged_in
     @destination = Destination.find(params[:id])
-    erb :'destinations/show'
+    if @destination.user_id == current_user.id
+     erb :'destinations/show'
+    else
+      erb :'destinations/index'
+    end
   end
 
   post "/destinations/:id" do
