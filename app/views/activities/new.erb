@@ -9,7 +9,8 @@
   <br>
   <label>Mark the Destination your Activity belongs to:</label>
   <%@destinations.all.each do |destination|%>
-    <label><%=destination.name%><input id="<%destination.name%>" type="checkbox" name="destinations[]" values="<%=destination.id%>"></label>
+    <input id="<%destination.name%>" type="radio" name="destinations" value="<%=destination.id%>">
+    <label for="<%destination.name%>"> <%=destination.name%></label>
   <% end %>
   <br>
   <input type="submit" value="Create">
