@@ -6,7 +6,7 @@ Travel Log is an app designed to help you keep track of all your adventures. It 
 
 ## Installation & Usage
 
-To use this app, just clone, run `rake db:migrate` and then run `shotgun`.
+To use this app, just clone, run `bundle install`, run `rake db:migrate` and then run `shotgun`.
 
 Then, register yourself as a user. Once you are registered you will be taken to Your Log where your Destinations will appear once you add them. The Destinations listed on Your Log are hyperlinks that will show you the activities that belong each Destination.
 
