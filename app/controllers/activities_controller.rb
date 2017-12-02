@@ -12,7 +12,8 @@ class ActivitiesController < ApplicationController
       redirect "/activities/new?error=Invalid Activity - Be sure to fill out all fields."
     end
     @new_activity = Activity.create(:name => params[:name], :description => params[:description])
-    current_user.activities << @new_activity
+    @destination = Destination.find(params[:destinations])
+    @destination.activities << @new_activity
     redirect "/activities"
   end
 
@@ -26,7 +27,7 @@ class ActivitiesController < ApplicationController
   get "/activities/:id" do
     redirect_if_not_logged_in
     @activity = Activity.find(params[:id])
-    if @activity.user_id == current_user.id
+    if @activity.user.id == current_user.id
       erb :'activities/show'
     else
       erb :'destinations/index'
