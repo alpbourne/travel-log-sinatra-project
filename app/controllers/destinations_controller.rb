@@ -9,7 +9,7 @@ class DestinationsController < ApplicationController
   post "/destinations" do
     redirect_if_not_logged_in
     if params[:name].empty?
-      redirect "/destinations/new?error=invalid destination"
+      redirect "/destinations/new?error=Invalid Destination - Please enter a name."
     else
       @new_destination = Destination.create(params)
       current_user.destinations << @new_destination

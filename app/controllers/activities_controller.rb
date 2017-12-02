@@ -9,7 +9,7 @@ class ActivitiesController < ApplicationController
   post "/activities" do
     redirect_if_not_logged_in
     if params[:name].empty? || params[:description].empty?
-      redirect "/activities/new?error=Invalid Activity - Be sure to fill out all fields."
+      redirect "/activities/new?error=Invalid Activity - Please fill out all fields."
     end
     @new_activity = Activity.create(:name => params[:name], :description => params[:description])
     @destination = Destination.find(params[:destinations])
