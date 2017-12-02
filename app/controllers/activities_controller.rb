@@ -54,7 +54,7 @@ class ActivitiesController < ApplicationController
 
   delete '/activities/:id/delete' do
     @activity = Activity.find(params[:id])
-    if logged_in? && @activity.user_id == current_user.id
+    if logged_in? && @activity.user.id == current_user.id
       @activity.destroy
       "Your Activity has been deleted."
       redirect '/activities'
