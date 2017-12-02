@@ -3,7 +3,7 @@ class DestinationsController < ApplicationController
   get "/destinations" do
     redirect_if_not_logged_in
     @destinations = current_user.destinations
-    erb :'destinations/index'
+    erb :'/destinations/index'
   end
 
   post "/destinations" do

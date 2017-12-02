@@ -10,7 +10,7 @@
   <br>
   <label>Mark the Destination your Activity belongs to:</label>
   <%@destinations.all.each do |destination|%>
-    <label><%=destination.name%><input id="<%destination.name%>" type="checkbox" name="destinations[]" value="<%=destination.id%>"></label>
+    <label><%=destination.name%><input id="<%destination.name%>" type="checkbox" name="destinations[]" value="<%=destination.id%>" <%='checked' if @activity.destination == destination %>></label>
   <% end %>
   <br>
   <input type="submit" value="Update">
