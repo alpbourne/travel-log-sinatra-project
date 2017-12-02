@@ -1,6 +1,6 @@
 # Travel Log
 
-##About
+## About
 
 Travel Log is an app designed to help you keep track of all your adventures. It allows users to keep track of the destinations they have visited and the activities they did at each destination.
 
