@@ -14,6 +14,7 @@ class UsersController < ApplicationController
 
   get '/register' do
     if !logged_in?
+      @error = params[:error]
       erb :'users/register'
     else
       redirect to '/destinations'
@@ -22,7 +23,7 @@ class UsersController < ApplicationController
 
   post '/register' do
     if params[:password] == "" || params[:username] == "" || !User.where(username: params[:username]).empty?
-      redirect to "/register"
+      redirect "/register?error=Unsuccessful Registration - username is taken and/or a field was left empty."
     else
       @user = User.new(:username => params[:username], :password => params[:password])
       if @user.save
