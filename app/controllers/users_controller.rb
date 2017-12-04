@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   end
 
   post '/register' do
-    if params[:password] == "" || params[:username] == ""
+    if params[:password] == "" || params[:username] == "" || !User.where(username: params[:username]).empty?
       redirect to "/register"
     else
       @user = User.new(:username => params[:username], :password => params[:password])
