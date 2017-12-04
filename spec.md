@@ -9,7 +9,7 @@ Specs:
 - [x] Ensure that users can't modify content created by other users - users are unable to modify each other's content
 - [x] Ensure that the belongs_to resource has routes for Creating, Reading, Updating and Destroying - Destinations and Activities are able to be created, read, updated, and destroyed
 - [x] Include user input validations - all fields need to be filled out to create User, Destination, or Activity
-- [x] Display validation failures to user with error message (example form URL e.g. /posts/new) - Messages pop up on screen for invalid destinations and activities
+- [x] Display validation failures to user with error message (example form URL e.g. /posts/new) - Messages pop up on screen for invalid registrations, destinations and activities
 - [x] Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code - It includes an About, Installation/Usage, Contributors, and License section.
 
 Confirm
