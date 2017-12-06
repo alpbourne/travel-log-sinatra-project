@@ -22,10 +22,10 @@ class UsersController < ApplicationController
   end
 
   post '/register' do
-    if params[:password] == "" || params[:username] == "" || !User.where(username: params[:username]).empty?
+    if params[:user][:password] == "" || params[:user][:username] == "" || User.find_by(username: params[:user][:username])
       redirect "/register?error=Unsuccessful Registration - username is taken and/or a field was left empty."
     else
-      @user = User.new(:username => params[:username], :password => params[:password])
+      @user = User.new(params[:user])
       if @user.save
         session[:user_id] = @user.id
         redirect '/destinations'
@@ -34,6 +34,7 @@ class UsersController < ApplicationController
       end
     end
   end
+
 
   get '/login' do
     @error_message = params[:error]
